@@ -1,0 +1,49 @@
+[1mdiff --git a/src/test/java/com/pluralsight/bdd/CalculatorStepDef.java b/src/test/java/com/pluralsight/bdd/CalculatorStepDef.java[m
+[1mindex cb1aee3..aa7fe96 100644[m
+[1m--- a/src/test/java/com/pluralsight/bdd/CalculatorStepDef.java[m
+[1m+++ b/src/test/java/com/pluralsight/bdd/CalculatorStepDef.java[m
+[36m@@ -1,9 +1,11 @@[m
+ package com.pluralsight.bdd;[m
+ [m
+[32m+[m[32mimport cucumber.api.java.en.And;[m
+ import cucumber.api.java.en.Given;[m
+ import cucumber.api.java.en.Then;[m
+ import cucumber.api.java.en.When;[m
+ [m
+[32m+[m[32mimport java.util.List;[m
+ import java.util.stream.Stream;[m
+ [m
+ import static org.assertj.core.api.Assertions.assertThat;[m
+[36m@@ -16,6 +18,10 @@[m [mpublic class CalculatorStepDef {[m
+     public void a_have_a_calculator() {[m
+         calculator = new Calculator();[m
+     }[m
+[32m+[m[32m    @And("his favorite flavirs are :")[m
+[32m+[m[32m    public void table(List<String> stringList) {[m
+[32m+[m[32m        calculator = new Calculator();[m
+[32m+[m[32m    }[m
+ [m
+     @When("I add {double} and {double}")[m
+     public void i_add_and(double double1, double double2) {[m
+[1mdiff --git a/src/test/resources/com/pluralsight/bdd/calculator.feature b/src/test/resources/com/pluralsight/bdd/calculator.feature[m
+[1mindex 233587c..731f7ad 100644[m
+[1m--- a/src/test/resources/com/pluralsight/bdd/calculator.feature[m
+[1m+++ b/src/test/resources/com/pluralsight/bdd/calculator.feature[m
+[36m@@ -2,10 +2,8 @@[m [mFeature: calcular[m
+   Scenario: Adding two numbers[m
+     Given a have a calculator[m
+     When I add 1.0 and 2.0[m
+[31m-    Then I should have 3.0[m
+[31m-  Scenario: Adding two numbers[m
+[31m-    Given a have a calculator[m
+     When I add 2.0 and 7.0[m
+[32m+[m[32m    Then I should have 3.0[m
+     Then I should have 9.0[m
+ [m
+   Scenario: Substracting two numbers[m
+[36m@@ -39,3 +37,5 @@[m [mFeature: calcular[m
+     And he orders 2 GreenGoodsness smothy[m
+     And she has ordered 2 GreenGoodsness smothy[m
+     And he has ordered 2 GreenGoodsness smothy[m
+[41m+[m
+[41m+[m
